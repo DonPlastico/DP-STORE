@@ -29,17 +29,54 @@
     "section_premium_subtitle": "SCRIPTS PREMIUM DE FIVEM",
     "section_bestselling": "LOS SCRIPTS MÁS VENDIDOS",
     "desc_animations": "El menú de animaciones más completo con props sincronizados y favoritos.",
-    "desc_loadingscreen": "Pantalla de carga ultra rápida, personalizable con música y vídeo de fondo.",
-    "desc_boombox": "Sistema de música portátil para llevar la fiesta a cualquier parte de la ciudad.",
-    "desc_garages": "Sistema de garajes realista con visualización de vehículos, daños y parking.",
-    "desc_menu": "Pack esencial de UI moderna para inputs y menús radiales optimizados.",
-    "desc_petsshop": "Tienda de mascotas completa con sistema de necesidades, niveles y trucos.",
+    "desc_textui": "Interfaz de texto flotante moderna y ultraligera. Personalización total y compatible con todos los frameworks.",
+    "desc_nitrous": "Inyección de adrenalina pura. Sistema de Óxido Nitroso (NOS) basado en items para carreras de alto nivel.",
+    "desc_hud": "Interfaz de nueva generación. Diseño minimalista que integra salud, armadura y un velocímetro avanzado.",
+    "desc_garages": "Gestión profesional de vehículos. Soporte para bandas, depósitos, incautaciones y garajes compartidos.",
+    "desc_loadingscreen": "La primera impresión cuenta. Pantalla de carga elegante, con música y video. 100% Standalone.",
+    "desc_menu": "El dúo esencial para tu UI. Menús radiales y entradas de texto rediseñados para una experiencia fluida.",
+    "desc_petsshop": "Compañeros leales. Adopta, cuida e interactúa con mascotas mediante una interfaz visual moderna.",
+    "desc_peds": "Identidad única. Sistema administrativo para asignar y gestionar Peds persistentes o temporales.",
+    "desc_extras": "Control total de flota. Menú de gestión para policías y mecánicos: liveries, extras y reparaciones.",
+    "desc_boombox": "Lleva la fiesta contigo. Altavoz portátil con integración real de Spotify, SoundCloud y YouTube.",
+    "desc_banking": "Finanzas de alto nivel. Banco con historial de transacciones, transferencias y cuentas compartidas.",
+    "desc_fuelv1": "Rediseño gratuito del clásico LegacyFuel. Sencillo, eficiente y funcional para empezar.",
+    "desc_fuelv2": "La evolución del repostaje. Sistema de combustible Premium protegido por Asset Escrow. Máximo rendimiento.",
+    "desc_clothing": "Estilo sin límites. Rediseño completo del sistema de ropa y personalización de personajes.",
+    "desc_notify": "Notificaciones limpias y ligeras. Sin dependencias, fácil integración y totalmente gratis.",
+    "desc_quests": "(WIP) Sistema RPG masivo. Crea misiones complejas con NPCs, diálogos y recompensas dinámicas.",
+    "desc_tattoos": "Arte en la piel. Sistema de tatuajes básico y gratuito para añadir personalidad a tus personajes.",
+    "desc_pkg_ui_starter": "El dúo perfecto para empezar. TextUI moderno y notificaciones limpias por un precio ridículo.",
+    "desc_pkg_speed_hud": "Velocidad y Control. Nuestro HUD avanzado junto con el sistema de Nitro para los amantes del motor.",
+    "desc_pkg_garage_pro": "Gestión vehicular total. Garajes, extras de policía/mecánico y sistema de combustible V2 encriptado.",
+    "desc_pkg_character": "Identidad única. Todo lo que tu personaje necesita: Ropa, Animaciones y Tatuajes en un solo pack.",
+    "desc_pkg_visual_overhaul": "Rediseña tu servidor. Pantalla de carga, Menús y TextUI para una estética 100% profesional.",
+    "desc_pkg_social": "Vida social y entretenimiento. Mascotas, radiocasetes y gestión de NPCs para dar vida a la ciudad.",
+    "desc_pkg_server_core": "El núcleo esencial. Banco, Menús y Notificaciones. La base sólida que todo servidor necesita.",
+    "desc_pkg_police_ems": "Pack de Servicios. Extras para vehículos de emergencia, HUD con constantes y Menús optimizados.",
+    "desc_pkg_street_king": "El rey de la calle. Garajes, Nitro, Combustible y el sistema de música Boombox para fardar.",
+    "desc_pkg_ultimate": "LA COLECCIÓN MAESTRA. Los 5 mejores scripts de DonPlastico en un solo paquete definitivo.",
     "btn_add_cart": "AÑADIR AL CARRITO",
+    "txt_includes": "INCLUYE:",
 
     "cart_title": "TU CARRITO",
     "cart_empty": "Tu carrito está vacío.",
+    "cart_subtotal": "Subtotal:",
+    "cart_discount": "Descuento",
     "cart_total": "Total:",
+    "btn_apply": "APLICAR",
     "btn_checkout": "COMPRAR YA",
+
+    "pkg_title": "PAQUETES",
+    "pkg_subtitle": "Mejora tu servidor de FiveM con los mejores scripts.",
+    "filter_all": "TODO",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Buscar paquetes...",
+    "btn_add_basket": "AÑADIR A LA CESTA",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "La colección completa de recursos optimizados para tu servidor.",
+    "script_search_placeholder": "Buscar scripts...",
 
     "faq_subtitle": "SOPORTE Y AYUDA",
     "faq_title": "PREGUNTAS FRECUENTES",
@@ -108,8 +145,22 @@
 
     "cart_title": "YOUR CART",
     "cart_empty": "Your cart is empty.",
+    "cart_subtotal": "Subtotal:",
+    "cart_discount": "Discount",
     "cart_total": "Total:",
+    "btn_apply": "APPLY",
     "btn_checkout": "CHECKOUT NOW",
+
+    "pkg_title": "PACKAGES",
+    "pkg_subtitle": "Upgrade Your FiveM Server with Top Scripts.",
+    "filter_all": "ALL",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Search packages...",
+    "btn_add_basket": "ADD TO BASKET",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "The complete collection of optimized resources for your server.",
+    "script_search_placeholder": "Search scripts...",
 
     "faq_subtitle": "SUPPORT & HELP",
     "faq_title": "FREQUENTLY ASKED QUESTIONS",
@@ -178,8 +229,22 @@
 
     "cart_title": "VOTRE PANIER",
     "cart_empty": "Votre panier est vide.",
+    "cart_subtotal": "Sous-total :",
+    "cart_discount": "Remise",
     "cart_total": "Total :",
+    "btn_apply": "APPLIQUER",
     "btn_checkout": "ACHETER MAINTENANT",
+
+    "pkg_title": "FORFAITS",
+    "pkg_subtitle": "Améliorez votre serveur FiveM avec les meilleurs scripts.",
+    "filter_all": "TOUT",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Rechercher des forfaits...",
+    "btn_add_basket": "AJOUTER AU PANIER",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "La collection complète de ressources optimisées pour votre serveur.",
+    "script_search_placeholder": "Rechercher des scripts...",
 
     "faq_subtitle": "SUPPORT & AIDE",
     "faq_title": "QUESTIONS FRÉQUENTES",
@@ -248,8 +313,22 @@
 
     "cart_title": "IHR WARENKORB",
     "cart_empty": "Ihr Warenkorb ist leer.",
+    "cart_subtotal": "Zwischensumme:",
+    "cart_discount": "Rabatt",
     "cart_total": "Gesamt:",
+    "btn_apply": "ANWENDEN",
     "btn_checkout": "JETZT KAUFEN",
+
+    "pkg_title": "PAKETE",
+    "pkg_subtitle": "Verbessern Sie Ihren FiveM-Server mit Top-Skripten.",
+    "filter_all": "ALLE",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Pakete suchen...",
+    "btn_add_basket": "IN DEN KORB",
+
+    "script_title": "SKRIPTE",
+    "script_subtitle": "Die komplette Sammlung optimierter Ressourcen für Ihren Server.",
+    "script_search_placeholder": "Skripte suchen...",
 
     "faq_subtitle": "HILFE & SUPPORT",
     "faq_title": "HÄUFIG GESTELLTE FRAGEN",
@@ -318,8 +397,22 @@
 
     "cart_title": "IL TUO CARRELLO",
     "cart_empty": "Il tuo carrello è vuoto.",
+    "cart_subtotal": "Subtotale:",
+    "cart_discount": "Sconto",
     "cart_total": "Totale:",
+    "btn_apply": "APPLICA",
     "btn_checkout": "ACQUISTA ORA",
+
+    "pkg_title": "PACCHETTI",
+    "pkg_subtitle": "Migliora il tuo server FiveM con i migliori script.",
+    "filter_all": "TUTTI",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Cerca pacchetti...",
+    "btn_add_basket": "AGGIUNGI AL CESTINO",
+
+    "script_title": "SCRIPT",
+    "script_subtitle": "La collezione completa di risorse ottimizzate per il tuo server.",
+    "script_search_placeholder": "Cerca script...",
 
     "faq_subtitle": "SUPPORTO & AIUTO",
     "faq_title": "DOMANDE FREQUENTI",
@@ -388,8 +481,22 @@
 
     "cart_title": "SEU CARRINHO",
     "cart_empty": "Seu carrinho está vazio.",
+    "cart_subtotal": "Subtotal:",
+    "cart_discount": "Desconto",
     "cart_total": "Total:",
+    "btn_apply": "APLICAR",
     "btn_checkout": "COMPRAR AGORA",
+
+    "pkg_title": "PACOTES",
+    "pkg_subtitle": "Melhore seu servidor FiveM com os melhores scripts.",
+    "filter_all": "TODOS",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Pesquisar pacotes...",
+    "btn_add_basket": "ADICIONAR AO CESTO",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "A coleção completa de recursos otimizados para o seu servidor.",
+    "script_search_placeholder": "Pesquisar scripts...",
 
     "faq_subtitle": "SUPORTE E AJUDA",
     "faq_title": "PERGUNTAS FREQUENTES",
@@ -458,8 +565,22 @@
 
     "cart_title": "UW WINKELWAGEN",
     "cart_empty": "Uw winkelwagen is leeg.",
+    "cart_subtotal": "Subtotaal:",
+    "cart_discount": "Korting",
     "cart_total": "Totaal:",
+    "btn_apply": "TOEPASSEN",
     "btn_checkout": "NU KOPEN",
+
+    "pkg_title": "PAKKETTEN",
+    "pkg_subtitle": "Upgrade je FiveM-server met topscripts.",
+    "filter_all": "ALLE",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Zoek pakketten...",
+    "btn_add_basket": "TOEVOEGEN AAN MANDJE",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "De complete collectie geoptimaliseerde bronnen voor uw server.",
+    "script_search_placeholder": "Zoek scripts...",
 
     "faq_subtitle": "HULP & ONDERSTEUNING",
     "faq_title": "VEELGESTELDE VRAGEN",
@@ -528,8 +649,22 @@
 
     "cart_title": "TWÓJ KOSZYK",
     "cart_empty": "Twój koszyk jest pusty.",
+    "cart_subtotal": "Suma częściowa:",
+    "cart_discount": "Rabat",
     "cart_total": "Suma:",
+    "btn_apply": "ZASTOSUJ",
     "btn_checkout": "KUP TERAZ",
+
+    "pkg_title": "PAKIETY",
+    "pkg_subtitle": "Ulepsz swój serwer FiveM dzięki najlepszym skryptom.",
+    "filter_all": "WSZYSTKIE",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Szukaj pakietów...",
+    "btn_add_basket": "DODAJ DO KOSZYKA",
+
+    "script_title": "SKRYPTY",
+    "script_subtitle": "Pełna kolekcja zoptymalizowanych zasobów dla twojego serwera.",
+    "script_search_placeholder": "Szukaj skryptów...",
 
     "faq_subtitle": "POMOC I WSPARCIE",
     "faq_title": "CZĘSTO ZADAWANE PYTANIA",
@@ -598,8 +733,22 @@
 
     "cart_title": "ВАША КОРЗИНА",
     "cart_empty": "Ваша корзина пуста.",
+    "cart_subtotal": "Подытог:",
+    "cart_discount": "Скидка",
     "cart_total": "Итого:",
+    "btn_apply": "ПРИМЕНИТЬ",
     "btn_checkout": "ОФОРМИТЬ ЗАКАЗ",
+
+    "pkg_title": "ПАКЕТЫ",
+    "pkg_subtitle": "Улучшите свой сервер FiveM с помощью лучших скриптов.",
+    "filter_all": "ВСЕ",
+    "filter_standalone": "АВТОНОМНЫЙ",
+    "pkg_search_placeholder": "Поиск пакетов...",
+    "btn_add_basket": "ДОБАВИТЬ В КОРЗИНУ",
+
+    "script_title": "СКРИПТЫ",
+    "script_subtitle": "Полная коллекция оптимизированных ресурсов для вашего сервера.",
+    "script_search_placeholder": "Поиск скриптов...",
 
     "faq_subtitle": "ПОДДЕРЖКА И ПОМОЩЬ",
     "faq_title": "ЧАСТО ЗАДАВАЕМЫЕ ВОПРОСЫ",
@@ -668,8 +817,22 @@
 
     "cart_title": "DIN VARUKORG",
     "cart_empty": "Din varukorg är tom.",
+    "cart_subtotal": "Delsumma:",
+    "cart_discount": "Rabatt",
     "cart_total": "Totalt:",
+    "btn_apply": "TILLÄMPA",
     "btn_checkout": "KÖP NU",
+
+    "pkg_title": "PAKET",
+    "pkg_subtitle": "Uppgradera din FiveM-server med toppskript.",
+    "filter_all": "ALLA",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Sök paket...",
+    "btn_add_basket": "LÄGG I KORG",
+
+    "script_title": "SKRIPT",
+    "script_subtitle": "Den kompletta samlingen av optimerade resurser för din server.",
+    "script_search_placeholder": "Sök skript...",
 
     "faq_subtitle": "HJÄLP & SUPPORT",
     "faq_title": "VANLIGA FRÅGOR",
@@ -738,8 +901,22 @@
 
     "cart_title": "DIN KURV",
     "cart_empty": "Din kurv er tom.",
+    "cart_subtotal": "Subtotal:",
+    "cart_discount": "Rabat",
     "cart_total": "Total:",
+    "btn_apply": "ANVEND",
     "btn_checkout": "KØB NU",
+
+    "pkg_title": "PAKKER",
+    "pkg_subtitle": "Opgrader din FiveM-server med topscripts.",
+    "filter_all": "ALLE",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Søg i pakker...",
+    "btn_add_basket": "TILFØJ TIL KURV",
+
+    "script_title": "SCRIPTS",
+    "script_subtitle": "Den komplette samling af optimerede ressourcer til din server.",
+    "script_search_placeholder": "Søg i scripts...",
 
     "faq_subtitle": "HJÆLP & SUPPORT",
     "faq_title": "OFTE STILLEDE SPØRGSMÅL",
@@ -808,8 +985,22 @@
 
     "cart_title": "OSTOSKORISI",
     "cart_empty": "Ostoskorisi on tyhjä.",
+    "cart_subtotal": "Välisumma:",
+    "cart_discount": "Alennus",
     "cart_total": "Yhteensä:",
+    "btn_apply": "KÄYTÄ",
     "btn_checkout": "OSTA NYT",
+
+    "pkg_title": "PAKETIT",
+    "pkg_subtitle": "Päivitä FiveM-palvelimesi huippuskripteillä.",
+    "filter_all": "KAIKKI",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Etsi paketteja...",
+    "btn_add_basket": "LISÄÄ KORIIN",
+
+    "script_title": "SKRIPTIT",
+    "script_subtitle": "Täydellinen kokoelma optimoituja resursseja palvelimellesi.",
+    "script_search_placeholder": "Etsi skriptejä...",
 
     "faq_subtitle": "APU & TUKI",
     "faq_title": "USEIN KYSYTYT KYSYMYKSET",
@@ -878,8 +1069,22 @@
 
     "cart_title": "VÁŠ KOŠÍK",
     "cart_empty": "Váš košík je prázdný.",
+    "cart_subtotal": "Mezisoučet:",
+    "cart_discount": "Sleva",
     "cart_total": "Celkem:",
+    "btn_apply": "POUŽÍT",
     "btn_checkout": "KOUPIT NYNÍ",
+
+    "pkg_title": "BALÍČKY",
+    "pkg_subtitle": "Vylepšete svůj FiveM server nejlepšími skripty.",
+    "filter_all": "VŠE",
+    "filter_standalone": "SAMOSTATNÝ",
+    "pkg_search_placeholder": "Hledat balíčky...",
+    "btn_add_basket": "PŘIDAT DO KOŠÍKU",
+
+    "script_title": "SKRIPTY",
+    "script_subtitle": "Kompletní sbírka optimalizovaných zdrojů pro váš server.",
+    "script_search_placeholder": "Hledat skripty...",
 
     "faq_subtitle": "POMOC A PODPORA",
     "faq_title": "ČASTO KLADENÉ OTÁZKY",
@@ -948,8 +1153,22 @@
 
     "cart_title": "KOSARAD",
     "cart_empty": "A kosarad üres.",
+    "cart_subtotal": "Részösszeg:",
+    "cart_discount": "Kedvezmény",
     "cart_total": "Összesen:",
+    "btn_apply": "ALKALMAZ",
     "btn_checkout": "VÁSÁRLÁS MOST",
+
+    "pkg_title": "CSOMAGOK",
+    "pkg_subtitle": "Fejlessze FiveM szerverét a legjobb scriptekkel.",
+    "filter_all": "ÖSSZES",
+    "filter_standalone": "STANDALONE",
+    "pkg_search_placeholder": "Csomagok keresése...",
+    "btn_add_basket": "KOSÁRBA",
+
+    "script_title": "SCRIPTEK",
+    "script_subtitle": "Optimalizált erőforrások teljes gyűjteménye a szerveredhez.",
+    "script_search_placeholder": "Scriptek keresése...",
 
     "faq_subtitle": "SEGÍTSÉG ÉS TÁMOGATÁS",
     "faq_title": "GYAKRAN ISMÉTELT KÉRDÉSEK",
@@ -1018,8 +1237,22 @@
 
     "cart_title": "SEPETİNİZ",
     "cart_empty": "Sepetiniz boş.",
+    "cart_subtotal": "Ara Toplam:",
+    "cart_discount": "İndirim",
     "cart_total": "Toplam:",
+    "btn_apply": "UYGULA",
     "btn_checkout": "ŞİMDİ SATIN AL",
+
+    "pkg_title": "PAKETLER",
+    "pkg_subtitle": "FiveM Sunucunuzu En İyi Scriptlerle Yükseltin.",
+    "filter_all": "TÜMÜ",
+    "filter_standalone": "BAĞIMSIZ",
+    "pkg_search_placeholder": "Paketleri ara...",
+    "btn_add_basket": "SEPETE EKLE",
+
+    "script_title": "SCRIPTLER",
+    "script_subtitle": "Sunucunuz için optimize edilmiş kaynakların tam koleksiyonu.",
+    "script_search_placeholder": "Script ara...",
 
     "faq_subtitle": "YARDIM VE DESTEK",
     "faq_title": "SIKÇA SORULAN SORULAR",
@@ -1088,8 +1321,22 @@
 
     "cart_title": "カート",
     "cart_empty": "カートは空です。",
+    "cart_subtotal": "小計",
+    "cart_discount": "割引",
     "cart_total": "合計:",
+    "btn_apply": "適用",
     "btn_checkout": "今すぐ購入",
+
+    "pkg_title": "パッケージ",
+    "pkg_subtitle": "最高のスクリプトでFiveMサーバーをアップグレード。",
+    "filter_all": "すべて",
+    "filter_standalone": "スタンドアローン",
+    "pkg_search_placeholder": "パッケージを検索...",
+    "btn_add_basket": "バスケットに追加",
+
+    "script_title": "スクリプト",
+    "script_subtitle": "サーバー向けの最適化されたリソースの完全なコレクション。",
+    "script_search_placeholder": "スクリプトを検索...",
 
     "faq_subtitle": "ヘルプとサポート",
     "faq_title": "よくある質問",
@@ -1158,8 +1405,22 @@
 
     "cart_title": "장바구니",
     "cart_empty": "장바구니가 비어 있습니다.",
+    "cart_subtotal": "소계",
+    "cart_discount": "할인",
     "cart_total": "합계:",
+    "btn_apply": "적용",
     "btn_checkout": "지금 구매",
+
+    "pkg_title": "패키지",
+    "pkg_subtitle": "최고의 스크립트로 FiveM 서버를 업그레이드하세요.",
+    "filter_all": "전체",
+    "filter_standalone": "독립형",
+    "pkg_search_placeholder": "패키지 검색...",
+    "btn_add_basket": "장바구니에 추가",
+
+    "script_title": "스크립트",
+    "script_subtitle": "서버를 위한 최적화된 리소스의 전체 모음입니다.",
+    "script_search_placeholder": "스크립트 검색...",
 
     "faq_subtitle": "도움말 및 지원",
     "faq_title": "자주 묻는 질문",

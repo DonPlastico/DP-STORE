@@ -29,12 +29,11 @@
         </div>
 
         <nav class="nav-center">
-            <a href="#" class="active" data-i18n="nav_home">INICIO</a>
-            <a href="#" data-i18n="nav_packages">PACKAGES</a>
-            <a href="#" data-i18n="nav_scripts">SCRIPTS</a>
-            <a href="#" data-i18n="nav_hud">HUD</a>
-            <a href="#" data-i18n="nav_suscription">Suscripciones</a>
-            <a href="#" data-i18n="nav_support">SUPPORT</a>
+            <a href="#" class="active" onclick="switchView('home')" data-i18n="nav_home">INICIO</a>
+            <a href="#" onclick="switchView('packages')" data-i18n="nav_packages">PACKAGES</a>
+            <a href="#" onclick="switchView('scripts')" data-i18n="nav_scripts">SCRIPTS</a>
+            <a href="#" onclick="switchView('suscription')" data-i18n="nav_suscription">Suscripciones</a>
+            <a href="#" onclick="switchView('support')" data-i18n="nav_support">SUPPORT</a>
         </nav>
 
         <div class="nav-right">
@@ -97,11 +96,31 @@
                         <div class="empty-cart-msg" data-i18n="cart_empty">Tu carrito está vacío.</div>
                     </div>
 
-                    <div class="cart-footer">
-                        <div class="cart-total">
-                            <span data-i18n="cart_total">Total:</span>
-                            <span id="cart-total-price">0.00 EUR</span>
+                    <div class="cart-footer-actions">
+
+                        <div class="coupon-section" id="coupon-section">
+                            <input type="text" id="coupon-input" placeholder="Código de descuento..."
+                                class="coupon-input">
+                            <button onclick="applyCoupon()" class="coupon-btn" data-i18n="btn_apply">APLICAR</button>
                         </div>
+                        <div id="coupon-message" class="coupon-msg"></div>
+
+                        <div class="cart-summary">
+                            <div class="summary-row">
+                                <span data-i18n="cart_subtotal">Subtotal:</span>
+                                <span id="cart-subtotal">0.00 EUR</span>
+                            </div>
+                            <div class="summary-row discount-row" id="discount-row" style="display:none;">
+                                <span><span data-i18n="cart_discount">Descuento</span> (<span
+                                        id="discount-percent">0%</span>):</span>
+                                <span id="cart-discount">-0.00 EUR</span>
+                            </div>
+                            <div class="summary-row total-row">
+                                <span data-i18n="cart_total">Total:</span>
+                                <span id="cart-total-price">0.00 EUR</span>
+                            </div>
+                        </div>
+
                         <button class="checkout-btn" data-i18n="btn_checkout">COMPRAR YA</button>
                     </div>
                 </div>
@@ -113,221 +132,293 @@
         </div>
     </header>
 
-    <section class="hero-container">
+    <main id="main-content">
 
-        <div class="hero-content">
-            <div class="hero-badge" data-i18n="hero_badge"> UPDATED V2.0</div>
+        <div id="view-home" class="view-section active">
+            <section class="hero-container">
 
-            <h1 class="hero-title">
-                <span data-i18n="hero_title_2">SIGUIENTE GENERACIÓN</span> <br>
-                <span class="glitch-text" data-i18n="hero_title_1">FIVEM SCRIPTS</span>
-            </h1>
+                <div class="hero-content">
+                    <div class="hero-badge" data-i18n="hero_badge"> UPDATED V2.0</div>
 
-            <p class="hero-subtitle" data-i18n="hero_subtitle">
-                Eleva tu servidor con scripts optimizados y UI exclusivas.
-                Soporte 24/7 y actualizaciones constantes.
-            </p>
+                    <h1 class="hero-title">
+                        <span data-i18n="hero_title_2">SIGUIENTE GENERACIÓN</span> <br>
+                        <span class="glitch-text" data-i18n="hero_title_1">FIVEM SCRIPTS</span>
+                    </h1>
 
-            <div class="cta-group">
-                <a href="#" class="cta-button primary">
-                    <span data-i18n="btn_store">VER MÁS</span> <i class="fas fa-arrow-right"></i>
-                </a>
-                <a href="#" class="cta-button secondary">
-                    <span data-i18n="btn_discord">DISCORD</span> <i class="fab fa-discord"></i>
-                </a>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">
+                        Eleva tu servidor con scripts optimizados y UI exclusivas.
+                        Soporte 24/7 y actualizaciones constantes.
+                    </p>
+
+                    <div class="cta-group">
+                        <a href="#" onclick="switchView('scripts')" class="cta-button primary">
+                            <span data-i18n="btn_store">VER MÁS</span> <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="#" class="cta-button secondary">
+                            <span data-i18n="btn_discord">DISCORD</span> <i class="fab fa-discord"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-widgets">
+
+                    <div class="cyber-widget payments-widget">
+                        <div class="widget-header">
+                            <i class="fas fa-receipt"></i> <span data-i18n="widget_payments">ÚLTIMAS COMPRAS</span>
+                        </div>
+                        <div class="payments-list-container" id="payments-list-content">
+                        </div>
+                        <div class="widget-footer">
+                            <button id="view-all-payments" class="view-all-btn">VER TODOS</button>
+                        </div>
+                    </div>
+
+                    <div class="cyber-widget featured-product">
+                        <div class="widget-tag" data-i18n="widget_featured">DESTACADO</div>
+                        <img src="Images/DP-CivNets Roleplay.png" class="featured-img" alt="Featured">
+                        <div class="featured-info">
+                            <h4 data-i18n="feat_title">DP-CIVNETS ROLEPLAY</h4>
+                            <p data-i18n="feat_desc">Web oficial del server de roleplay. PROXIMAMENTE</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <div class="marquee-container">
+                <div class="marquee-content">
+                    <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
+                    <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
+                    <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
+
+                    <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
+                    <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
+                    <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
+
+                    <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
+                    <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
+                    <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
+
+                    <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
+                    <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
+                    <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
+                </div>
+            </div>
+
+            <section class="best-selling-section">
+
+                <div class="section-header-wrapper">
+                    <div class="section-subtitle">
+                        <i class="fas fa-gem"></i> <span data-i18n="section_premium_subtitle">SCRIPTS PREMIUM DE
+                            FIVEM</span>
+                    </div>
+                    <h2 class="section-title premium-title">
+                        <span class="line-decor"></span>
+                        <span data-i18n="section_bestselling">LOS SCRIPTS MÁS VENDIDOS</span>
+                        <span class="line-decor"></span>
+                    </h2>
+                </div>
+
+                <div class="products-grid">
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-Garages.png" alt="DP-Garages">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-garage"
+                                    data-name="DP-Garages" data-base-price="34.99"
+                                    data-img="Images/Scripts/DP-Garages.png" data-desc="desc_garages"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Garages</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 5.0</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_garages">Sistema de garajes realista...</p>
+                            <span class="price" data-base-price="34.99">34.99 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-Boombox.png" alt="DP-Boombox">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-boom"
+                                    data-name="DP-Boombox" data-base-price="44.99"
+                                    data-img="Images/Scripts/DP-Boombox.png" data-desc="desc_boombox"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Boombox</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 5.0</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_boombox">Sistema de música portátil...</p>
+                            <span class="price" data-base-price="44.99">44.99 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-LoadingScreen.png" alt="DP-Hud">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-hud"
+                                    data-name="DP-Hud" data-base-price="17.99"
+                                    data-img="Images/Scripts/DP-LoadingScreen.png" data-desc="desc_hud"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Hud</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 4.9</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_hud">Interfaz de nueva generación...</p>
+                            <span class="price" data-base-price="17.99">17.99 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-Garages.png" alt="DP-Fuel V2">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-fuelv2"
+                                    data-name="DP-Fuel V2" data-base-price="24.95"
+                                    data-img="Images/Scripts/DP-Garages.png" data-desc="desc_fuelv2"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Fuel V2</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 4.8</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_fuelv2">Sistema de combustible Premium...</p>
+                            <span class="price" data-base-price="24.95">24.95 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-Menu-DP-Input.png" alt="DP-Banking">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-bank"
+                                    data-name="DP-Banking" data-base-price="29.99"
+                                    data-img="Images/Scripts/DP-Menu-DP-Input.png" data-desc="desc_banking"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Banking</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 4.7</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_banking">Sistema bancario avanzado...</p>
+                            <span class="price" data-base-price="29.99">29.99 EUR</span>
+                        </div>
+                    </div>
+
+                    <div class="product-card">
+                        <div class="card-image">
+                            <img src="Images/Scripts/DP-Animations.png" alt="DP-Animations">
+                            <div class="overlay">
+                                <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="dp-anim"
+                                    data-name="DP-Animations" data-base-price="16.99"
+                                    data-img="Images/Scripts/DP-Animations.png" data-desc="desc_animations"
+                                    onclick="addToCart(this)">
+                                    AÑADIR AL CARRITO
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-info">
+                            <div class="info-header">
+                                <h3>DP-Animations</h3>
+                                <div class="rating"><i class="fas fa-star"></i> 5.0</div>
+                            </div>
+                            <p class="card-desc" data-i18n="desc_animations">El menú de animaciones más completo...</p>
+                            <span class="price" data-base-price="16.99">16.99 EUR</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <div id="view-packages" class="view-section" style="display: none;">
+
+            <section class="packages-header">
+                <div class="pkg-header-content">
+                    <h1 data-i18n="pkg_title">PACKAGES</h1>
+                    <p data-i18n="pkg_subtitle">Upgrade Your FiveM Server with Top Scripts</p>
+
+                    <div class="pkg-filters">
+                        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">ALL</button>
+                        <button class="filter-btn" data-filter="esx">ESX</button>
+                        <button class="filter-btn" data-filter="qbcore">QBCore</button>
+                        <button class="filter-btn" data-filter="standalone">Standalone</button>
+                    </div>
+                </div>
+            </section>
+
+            <div class="packages-toolbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="pkg-search" placeholder="Search packages..."
+                        data-i18n-placeholder="pkg_search_placeholder" onkeyup="filterPackages()">
+                </div>
+            </div>
+
+            <div class="packages-grid-container">
+                <div id="packages-list" class="packages-grid">
+                </div>
             </div>
         </div>
 
-        <div class="hero-widgets">
+        <div id="view-scripts" class="view-section" style="display: none;">
 
-            <div class="cyber-widget payments-widget">
-                <div class="widget-header">
-                    <i class="fas fa-receipt"></i> <span data-i18n="widget_payments">ÚLTIMAS COMPRAS</span>
+            <section class="packages-header">
+                <div class="pkg-header-content">
+                    <h1 data-i18n="script_title">SCRIPTS</h1>
+                    <p data-i18n="script_subtitle">La colección completa de recursos optimizados.</p>
+
+                    <div class="pkg-filters">
+                        <button class="filter-btn script-filter-btn active" data-filter="all"
+                            data-i18n="filter_all">ALL</button>
+                        <button class="filter-btn script-filter-btn" data-filter="esx">ESX</button>
+                        <button class="filter-btn script-filter-btn" data-filter="qbcore">QBCore</button>
+                        <button class="filter-btn script-filter-btn" data-filter="standalone"
+                            data-i18n="filter_standalone">Standalone</button>
+                    </div>
                 </div>
-                <div class="payments-list-container" id="payments-list-content">
-                </div>
-                <div class="widget-footer">
-                    <button id="view-all-payments" class="view-all-btn">VER TODOS</button>
+            </section>
+
+            <div class="packages-toolbar">
+                <div class="search-container">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="script-search" placeholder="Search scripts..."
+                        data-i18n-placeholder="script_search_placeholder" onkeyup="filterScripts()">
                 </div>
             </div>
 
-            <div class="cyber-widget featured-product">
-                <div class="widget-tag" data-i18n="widget_featured">DESTACADO</div>
-                <img src="Images/DP-CivNets Roleplay.png" class="featured-img" alt="Featured">
-                <div class="featured-info">
-                    <h4 data-i18n="feat_title">DP-CIVNETS ROLEPLAY</h4>
-                    <p data-i18n="feat_desc">Web oficial del server de roleplay. PROXIMAMENTE</p>
-                </div>
-            </div>
-
-        </div>
-    </section>
-
-    <div class="marquee-container">
-        <div class="marquee-content">
-            <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
-            <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
-            <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
-
-            <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
-            <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
-            <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
-
-            <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
-            <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
-            <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
-
-            <span data-i18n="marquee_discount"> 30% CÓDIGO DESCUENTO: DP30</span>
-            <span data-i18n="marquee_new"> NUEVOS SCRIPTS DISPONIBLES</span>
-            <span data-i18n="marquee_discord"> ÚNETE A NUESTRO DISCORD</span>
-        </div>
-    </div>
-
-    <section class="best-selling-section">
-
-        <div class="section-header-wrapper">
-            <div class="section-subtitle">
-                <i class="fas fa-gem"></i> <span data-i18n="section_premium_subtitle">SCRIPTS PREMIUM DE FIVEM</span>
-            </div>
-            <h2 class="section-title premium-title">
-                <span class="line-decor"></span>
-                <span data-i18n="section_bestselling">LOS SCRIPTS MÁS VENDIDOS</span>
-                <span class="line-decor"></span>
-            </h2>
-        </div>
-
-        <div class="products-grid">
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-Animations.png" alt="DP-Animations">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-Animations"
-                            data-name="DP-Animations" data-base-price="15.00"
-                            data-img="Images/Scripts/DP-Animations.png" data-desc="desc_animations"
-                            onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-Animations</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 5.0</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_animations">El menú de animaciones más completo...</p>
-                    <span class="price" data-base-price="15.00">15.00 EUR</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-LoadingScreen.png" alt="DP-LoadingScreen">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-LoadingScreen"
-                            data-name="DP-LoadingScreen" data-base-price="20.00"
-                            data-img="Images/Scripts/DP-LoadingScreen.png" data-desc="desc_loadingscreen"
-                            onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-LoadingScreen</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 4.9</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_loadingscreen">Pantalla de carga ultra rápida...</p>
-                    <span class="price" data-base-price="20.00">20.00 EUR</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-Boombox.png" alt="DP-Boombox">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-Boombox"
-                            data-name="DP-Boombox" data-base-price="5.00" data-img="Images/Scripts/DP-Boombox.png"
-                            data-desc="desc_boombox" onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-Boombox</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 4.8</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_boombox">Sistema de música portátil...</p>
-                    <span class="price" data-base-price="5.00">5.00 EUR</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-Garages.png" alt="DP-Garages">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-Garages"
-                            data-name="DP-Garages" data-base-price="25.00" data-img="Images/Scripts/DP-Garages.png"
-                            data-desc="desc_garages" onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-Garages</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 5.0</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_garages">Sistema de garajes realista...</p>
-                    <span class="price" data-base-price="25.00">25.00 EUR</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-Menu-DP-Input.png" alt="DP-Menu + DP-Input">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-Menu-DP-Input"
-                            data-name="DP-Menu-DP-Input" data-base-price="12.00"
-                            data-img="Images/Scripts/DP-Menu-DP-Input.png" data-desc="desc_menu"
-                            onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-Menu + Input</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 4.7</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_menu">Pack esencial de UI moderna...</p>
-                    <span class="price" data-base-price="12.00">12.00 EUR</span>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <div class="card-image">
-                    <img src="Images/Scripts/DP-PetsShop.png" alt="DP-PetsShop">
-                    <div class="overlay">
-                        <button class="add-cart-btn" data-i18n="btn_add_cart" data-id="DP-PetsShop"
-                            data-name="DP-PetsShop" data-base-price="10.00" data-img="Images/Scripts/DP-PetsShop.png"
-                            data-desc="desc_petsshop" onclick="addToCart(this)">
-                            AÑADIR AL CARRITO
-                        </button>
-                    </div>
-                </div>
-                <div class="card-info">
-                    <div class="info-header">
-                        <h3>DP-PetsShop</h3>
-                        <div class="rating"><i class="fas fa-star"></i> 4.9</div>
-                    </div>
-                    <p class="card-desc" data-i18n="desc_petsshop">Tienda de mascotas completa...</p>
-                    <span class="price" data-base-price="10.00">10.00 EUR</span>
+            <div class="packages-grid-container">
+                <div id="scripts-list" class="packages-grid">
                 </div>
             </div>
         </div>
-    </section>
+
+    </main>
 
     <section class="faq-section">
 
