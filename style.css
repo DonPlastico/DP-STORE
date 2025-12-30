@@ -1,25 +1,37 @@
-/* =========================================
-   1. VARIABLES Y RESET (PALETA "CYBER AURORA" - DP ORIGINAL)
-   ========================================= */
+/* ==========================================================================
+   1. VARIABLES Y CONFIGURACIÓN (CORE)
+   Aquí definimos la paleta de colores "Cyber Aurora".
+   ========================================================================== */
 :root {
+    /* FORZADO DE TEMA OSCURO (Para navegadores) */
+    color-scheme: dark;
+
+    /* PALETA DE COLORES */
     --bg-color: #030305;
     --card-bg: rgba(255, 255, 255, 0.03);
     --card-border: rgba(255, 255, 255, 0.08);
 
     --accent-primary: #00f3ff;
-    /* CIAN */
+    /* CIAN NEÓN */
     --accent-secondary: #6b148a;
     /* VIOLETA */
     --accent-glow: rgba(0, 243, 255, 0.3);
-    /* Glow Cian */
+    /* Brillo del Cian */
 
     --text-main: #ffffff;
     --text-muted: #a0a0a0;
 
+    /* TIPOGRAFÍAS */
     --font-main: 'Inter', sans-serif;
+    /* Para textos largos */
     --font-code: 'JetBrains Mono', monospace;
+    /* Para números, precios y títulos técnicos */
 }
 
+/* ==========================================================================
+   2. RESET Y ESTILOS BASE
+   Configuración inicial para que todo se vea igual en todos los navegadores.
+   ========================================================================== */
 * {
     margin: 0;
     padding: 0;
@@ -27,48 +39,23 @@
 }
 
 body {
-    background-color: transparent;
-    /* El color lo da el canvas-bg */
-    color: var(--text-main);
+    /* El !important evita que extensiones externas cambien el fondo */
+    background-color: var(--bg-color) !important;
+    color: var(--text-main) !important;
     font-family: var(--font-main);
     min-height: 100vh;
     overflow-x: hidden;
+
+    /* Evita que Opera GX invierta los colores */
+    filter: none !important;
 }
 
-/* FONDO GRADIENTE FIJO (Copiado de tu portafolio) */
-#canvas-bg {
-    position: fixed;
-    /* Se queda fijo aunque hagas scroll (efecto moderno) */
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: -10;
-
-    /* AQUÍ ESTÁ LA MAGIA */
-    background:
-        /* Capa 1 (Arriba): Gradiente oscuro para leer el texto a la izquierda */
-        /* Va de Negro casi sólido (izq) -> a Violeta transparente (der) */
-        linear-gradient(90deg,
-            rgba(3, 3, 5, 0.95) 0%,
-            rgba(3, 3, 5, 0.7) 45%,
-            rgba(107, 20, 138, 0.1) 100%),
-
-        /* Capa 2 (Abajo): Tu imagen generada */
-        url('Images/Fondo.png');
-    /* <--- ASEGÚRATE DE LA RUTA */
-
-    /* AJUSTES DE LA IMAGEN */
-    background-size: cover;
-    /* Escala la imagen para llenar la pantalla sin deformarse */
-    background-position: center;
-    /* Centra la imagen */
-    background-repeat: no-repeat;
-
-    /* OPCIONAL: Si quieres ese efecto "Blur" o desenfoque leve en la imagen de fondo */
-    /* filter: blur(2px); */
-    /* transform: scale(1.02); */
-    /* Escalar un poco para evitar bordes blancos por el blur */
+/* Prevenir inversión de colores en multimedia */
+img,
+video,
+iframe,
+canvas {
+    filter: none !important;
 }
 
 a {
@@ -81,32 +68,48 @@ ul {
     list-style: none;
 }
 
-/* =========================================
-   2. NAVBAR GLASSMORPHISM (LAYOUT 3 COLUMNAS)
-   ========================================= */
+/* FONDO GRADIENTE FIJO */
+#canvas-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -10;
+    background:
+        /* Capa superior: Gradiente oscuro */
+        linear-gradient(90deg, rgba(3, 3, 5, 0.95) 0%, rgba(3, 3, 5, 0.7) 45%, rgba(107, 20, 138, 0.1) 100%),
+        /* Capa inferior: Imagen de fondo (Asegúrate que la ruta sea correcta) */
+        url('Images/Fondo.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* ==========================================================================
+   3. BARRA DE NAVEGACIÓN (NAVBAR)
+   Diseño de 3 columnas: Logo | Menú | Herramientas
+   ========================================================================== */
 .navbar {
-    /* Usamos Grid para dividir en 3 partes exactas */
     display: grid;
     grid-template-columns: 1fr auto 1fr;
-    /* Izq (espacio) - Auto (centro) - Der (espacio) */
+    /* Izq | Centro | Der */
     align-items: center;
-
     padding: 15px 40px;
     background: rgba(3, 3, 5, 0.85);
-    /* Un poco más oscuro para leer mejor */
+    /* Semitransparente */
     backdrop-filter: blur(15px);
+    /* Efecto cristal */
     border-bottom: 1px solid var(--card-border);
     position: fixed;
     width: 100%;
     z-index: 100;
     height: 80px;
-    /* Altura fija para evitar saltos */
 }
 
-/* 1. IZQUIERDA */
+/* 3.1 LOGOTIPO (Izquierda) */
 .nav-brand {
     justify-self: start;
-    /* Pegado a la izquierda */
 }
 
 .logo-text {
@@ -115,7 +118,6 @@ ul {
     font-weight: 700;
     letter-spacing: -1px;
     color: white;
-    text-decoration: none;
 }
 
 .highlight {
@@ -123,15 +125,12 @@ ul {
     text-shadow: 0 0 10px var(--accent-glow);
 }
 
-/* 2. CENTRO */
+/* 3.2 MENÚ CENTRAL */
 .nav-center {
     justify-self: center;
-    /* Perfectamente centrado */
     display: flex;
     gap: 30px;
-    /* Separación entre enlaces */
     background: rgba(255, 255, 255, 0.03);
-    /* Fondo sutil estilo "isla" opcional */
     padding: 10px 30px;
     border-radius: 50px;
     border: 1px solid rgba(255, 255, 255, 0.05);
@@ -145,16 +144,14 @@ ul {
     font-weight: 600;
     letter-spacing: 0.5px;
     position: relative;
-    transition: 0.3s;
 }
 
-/* Efecto Hover en el menú */
 .nav-center a:hover,
 .nav-center a.active {
     color: var(--accent-primary);
 }
 
-/* Pequeño punto brillante debajo del activo */
+/* Punto brillante bajo el enlace activo */
 .nav-center a.active::after {
     content: '';
     position: absolute;
@@ -168,10 +165,9 @@ ul {
     box-shadow: 0 0 5px var(--accent-primary);
 }
 
-/* 3. DERECHA */
+/* 3.3 HERRAMIENTAS DERECHA (Idioma, Carrito, Login) */
 .nav-right {
     justify-self: end;
-    /* Pegado a la derecha */
     display: flex;
     align-items: center;
     gap: 20px;
@@ -179,119 +175,17 @@ ul {
     font-size: 0.85rem;
 }
 
-/* El contenedor padre para posicionar el menú */
+/* ==========================================================================
+   4. MENÚS DESPLEGABLES (DROPDOWNS)
+   Estilos compartidos y específicos para Idioma y Carrito
+   ========================================================================== */
+
+/* --- A. SELECTOR DE IDIOMA --- */
 .lang-menu-wrapper {
     position: relative;
     display: inline-block;
 }
 
-/* La lista desplegable */
-.lang-dropdown-list {
-    position: absolute;
-    top: 120%;
-    /* Un poco separado del botón (100% + espacio) */
-    left: 50%;
-    transform: translateX(-50%);
-    /* Centrado respecto al botón */
-
-    background: #050505;
-    /* Fondo negro profundo */
-    border: 1px solid var(--card-border);
-    border-radius: 10px;
-
-    min-width: 180px;
-    /* Ancho mínimo */
-    max-height: 400px;
-    /* Altura máxima antes de scroll */
-    overflow-y: auto;
-    /* Scroll si hay muchos idiomas */
-
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
-
-    /* Oculto por defecto */
-    opacity: 0;
-    visibility: hidden;
-    transition: all 0.3s ease;
-    z-index: 1000;
-}
-
-/* Clase para mostrarlo */
-.lang-dropdown-list.active {
-    opacity: 1;
-    visibility: visible;
-    top: 100%;
-    /* Pequeña animación de bajada */
-}
-
-/* Elementos de la lista */
-.lang-dropdown-list li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px 15px;
-    font-family: var(--font-code);
-    font-size: 0.8rem;
-    color: var(--text-muted);
-    cursor: pointer;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    transition: 0.2s;
-}
-
-.lang-dropdown-list li:last-child {
-    border-bottom: none;
-}
-
-.lang-dropdown-list li img {
-    width: 20px;
-    border-radius: 2px;
-}
-
-/* Hover: Efecto Neon */
-.lang-dropdown-list li:hover {
-    background: rgba(255, 255, 255, 0.05);
-    color: white;
-    padding-left: 20px;
-    /* Pequeño desplazamiento a la derecha */
-    border-left: 3px solid var(--accent-primary);
-}
-
-/* Estado ACTIVO (El idioma seleccionado) */
-.lang-dropdown-list li.active-lang {
-    background: var(--accent-primary);
-    /* Fondo Cian Neon */
-    color: #000;
-    /* Texto Negro para contraste */
-    font-weight: 700;
-    /* Negrita */
-    border-left: none;
-    /* Quitamos borde si lo hubiera */
-    padding-left: 20px;
-    /* Mantener el indentado */
-    box-shadow: 0 0 15px var(--accent-glow);
-    /* Un poco de brillo */
-}
-
-/* Ajuste para que la imagen no se vea rara sobre fondo cyan */
-.lang-dropdown-list li.active-lang img {
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
-    /* Sombrita a la bandera */
-}
-
-/* Scrollbar personalizada para la lista */
-.lang-dropdown-list::-webkit-scrollbar {
-    width: 5px;
-}
-
-.lang-dropdown-list::-webkit-scrollbar-thumb {
-    background: var(--accent-secondary);
-    border-radius: 10px;
-}
-
-.lang-dropdown-list::-webkit-scrollbar-track {
-    background: #0a0a0c;
-}
-
-/* Ajustes de botones derecha (igual que antes) */
 .lang-selector {
     cursor: pointer;
     display: flex;
@@ -308,15 +202,246 @@ ul {
     border-color: var(--card-border);
 }
 
-.cart-btn {
-    color: var(--text-main);
-    transition: 0.3s;
+.lang-dropdown-list {
+    position: absolute;
+    top: 120%;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #050505;
+    border: 1px solid var(--card-border);
+    border-radius: 10px;
+    min-width: 180px;
+    max-height: 400px;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 1000;
 }
 
-.cart-btn:hover {
+.lang-dropdown-list.active {
+    opacity: 1;
+    visibility: visible;
+    top: 100%;
+}
+
+.lang-dropdown-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 15px;
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    cursor: pointer;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.2s;
+}
+
+.lang-dropdown-list li:hover {
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    padding-left: 20px;
+    border-left: 3px solid var(--accent-primary);
+}
+
+.lang-dropdown-list li.active-lang {
+    background: var(--accent-primary);
+    color: #000;
+    font-weight: 700;
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+
+.lang-dropdown-list li img {
+    width: 20px;
+    border-radius: 2px;
+}
+
+/* Scrollbar personalizada para dropdowns */
+.lang-dropdown-list::-webkit-scrollbar,
+.cart-items-container::-webkit-scrollbar,
+.payments-list-container::-webkit-scrollbar {
+    width: 4px;
+}
+
+.lang-dropdown-list::-webkit-scrollbar-thumb,
+.cart-items-container::-webkit-scrollbar-thumb {
+    background: var(--accent-secondary);
+    border-radius: 10px;
+}
+
+/* --- B. SELECTOR DE CARRITO --- */
+.cart-menu-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+.cart-selector {
+    cursor: pointer;
+    color: var(--text-main);
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.cart-selector:hover {
     color: var(--accent-primary);
 }
 
+.cart-dropdown-panel {
+    position: absolute;
+    top: 140%;
+    right: 0;
+    /* Alineado a la derecha */
+    width: 350px;
+    background: #0a0a0c;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(10px);
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-dropdown-panel.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.cart-header {
+    padding: 15px 20px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    font-family: var(--font-code);
+    font-weight: 700;
+    color: white;
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.cart-items-container {
+    max-height: 300px;
+    overflow-y: auto;
+    padding: 10px;
+}
+
+.empty-cart-msg {
+    text-align: center;
+    padding: 30px 0;
+    color: #666;
+    font-size: 0.9rem;
+}
+
+/* Estilo del Item en el Carrito */
+.cart-item {
+    display: flex;
+    gap: 15px;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    transition: 0.2s;
+    position: relative;
+}
+
+.cart-item:hover {
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.cart-item-img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 6px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.cart-item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.cart-item-title {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 3px;
+}
+
+.cart-item-desc {
+    font-size: 0.7rem;
+    color: #888;
+    margin-bottom: 5px;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.cart-item-price {
+    font-family: var(--font-code);
+    color: var(--accent-primary);
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.remove-item-btn {
+    background: none;
+    border: none;
+    color: #ff4757;
+    cursor: pointer;
+    font-size: 0.9rem;
+    align-self: center;
+    padding: 5px;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.remove-item-btn:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.cart-footer {
+    padding: 15px 20px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+.cart-total {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    font-family: var(--font-code);
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.checkout-btn {
+    width: 100%;
+    padding: 12px;
+    background: var(--accent-primary);
+    color: black;
+    border: none;
+    border-radius: 6px;
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.checkout-btn:hover {
+    background: white;
+    box-shadow: 0 0 15px var(--accent-primary);
+}
+
+/* --- C. BOTÓN LOGIN (Navbar) --- */
 .login-btn {
     background: var(--card-bg);
     border: 1px solid var(--accent-secondary);
@@ -326,7 +451,7 @@ ul {
     box-shadow: 0 0 10px rgba(107, 20, 138, 0.2);
     font-weight: bold;
     display: flex;
-    /* Para alinear icono y texto si se loguea */
+    cursor: pointer;
     align-items: center;
     gap: 8px;
 }
@@ -336,28 +461,11 @@ ul {
     box-shadow: 0 0 20px rgba(107, 20, 138, 0.6);
 }
 
-/* RESPONSIVE: Si la pantalla es pequeña, ocultamos el menú centro (para futuro menú hamburguesa) */
-@media (max-width: 900px) {
-    .navbar {
-        grid-template-columns: 1fr 1fr;
-        /* Solo 2 columnas */
-    }
-
-    .nav-center {
-        display: none;
-        /* Ocultamos menú en móvil por ahora */
-    }
-
-    .nav-right {
-        justify-self: end;
-    }
-}
-
-/* =========================================
-   3. HERO SECTION (LAYOUT)
-   ========================================= */
+/* ==========================================================================
+   5. SECCIÓN HERO (PORTADA PRINCIPAL)
+   ========================================================================== */
 .hero-container {
-    padding: 140px 0 50px 10%;
+    padding: 147px 0 50px 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -367,7 +475,7 @@ ul {
     gap: 40px;
 }
 
-/* COLUMNA IZQUIERDA: TEXTO */
+/* 5.1 TEXTOS IZQUIERDA */
 .hero-content {
     flex: 1;
     min-width: 300px;
@@ -409,6 +517,7 @@ ul {
     max-width: 500px;
 }
 
+/* 5.2 BOTONES CTA (Call to Action) */
 .cta-group {
     display: flex;
     gap: 20px;
@@ -428,7 +537,6 @@ ul {
 .cta-button.primary {
     background: var(--accent-primary);
     color: black;
-    /* Texto negro para contraste con Cyan */
     border: 1px solid var(--accent-primary);
 }
 
@@ -449,21 +557,15 @@ ul {
     border-color: white;
 }
 
-/* =========================================
-   4. WIDGETS DERECHA (TEBEX STYLE)
-   ========================================= */
+/* 5.3 WIDGETS DERECHA */
 .hero-widgets {
     flex: 0.8;
     min-width: 300px;
     display: flex;
     flex-direction: column;
     gap: 10px;
-
-    /* ALINEACIÓN A LA DERECHA */
     align-items: flex-end;
     padding: 50px 60px 50px 100px;
-
-    /* Opcional: Bordes redondeados solo a la izquierda para suavizar */
     border-top-left-radius: 100px;
     border-bottom-left-radius: 100px;
 }
@@ -485,7 +587,7 @@ ul {
     box-shadow: 0 0 20px rgba(0, 243, 255, 0.1);
 }
 
-/* WIDGET PAGOS */
+/* Estilos Widget Pagos */
 .widget-header {
     font-family: var(--font-code);
     color: var(--accent-primary);
@@ -539,7 +641,29 @@ ul {
     font-weight: bold;
 }
 
-/* WIDGET DESTACADO */
+.widget-footer {
+    border-top: 1px solid var(--card-border);
+    padding-top: 10px;
+    margin-top: 10px;
+    text-align: center;
+}
+
+.view-all-btn {
+    background: transparent;
+    border: none;
+    color: var(--accent-primary);
+    font-family: var(--font-code);
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.view-all-btn:hover {
+    color: white;
+    text-shadow: 0 0 5px var(--accent-glow);
+}
+
+/* Estilos Widget Destacado */
 .featured-product {
     position: relative;
     padding: 0;
@@ -583,60 +707,321 @@ ul {
     z-index: 10;
 }
 
-/* SIDEBAR IDIOMAS (Mismo de antes, colores adaptados) */
-.lang-sidebar {
-    position: fixed;
-    top: 0;
-    right: -300px;
-    width: 300px;
-    height: 100vh;
-    background: #050505;
-    border-left: 2px solid var(--accent-primary);
-    z-index: 200;
-    transition: 0.4s ease-in-out;
-    padding: 20px;
-    box-shadow: -10px 0 50px rgba(0, 0, 0, 0.8);
-    overflow-y: auto;
+/* ==========================================================================
+   6. MARQUEE (CINTA DE TEXTO)
+   ========================================================================== */
+.marquee-container {
+    background: var(--accent-primary);
+    color: #000;
+    padding: 14px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 10;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+    box-shadow: 0 0 20px var(--accent-glow);
 }
 
-.lang-sidebar.active {
+.marquee-content {
+    display: inline-block;
+    animation: scrollText 20s linear infinite;
+}
+
+.marquee-content span {
+    font-family: var(--font-head);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-right: 50px;
+    letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   7. TIENDA (BEST SELLING SCRIPTS)
+   ========================================================================== */
+.best-selling-section {
+    padding: 80px 10%;
+    background: #050505;
+    position: relative;
+}
+
+/* Encabezado Premium */
+.section-header-wrapper {
+    text-align: center;
+    margin-bottom: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.section-subtitle {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(0, 243, 255, 0.05);
+    border: 1px solid var(--card-border);
+    padding: 6px 16px;
+    border-radius: 4px;
+    font-family: var(--font-code);
+    font-size: 0.75rem;
+    color: var(--accent-primary);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+
+.premium-title {
+    font-family: var(--font-main);
+    font-size: 2.5rem;
+    color: white;
+    text-transform: uppercase;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    letter-spacing: -1px;
+    width: 100%;
+}
+
+.line-decor {
+    display: block;
+    height: 4px;
+    flex-grow: 1;
+    max-width: 150px;
+    background: #222;
+    position: relative;
+    border-radius: 2px;
+}
+
+.line-decor::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 40%;
+    height: 100%;
+    background: var(--accent-primary);
+}
+
+.premium-title .line-decor:first-child::after {
     right: 0;
 }
 
-.lang-header {
+.premium-title .line-decor:last-child::after {
+    left: 0;
+}
+
+/* Grid de Productos */
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
+    margin-bottom: 50px;
+}
+
+.product-card {
+    background: #0a0a0c;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: 0.4s ease;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+.product-card:hover {
+    border-color: var(--accent-primary);
+    transform: translateY(-8px);
+    box-shadow: 0 20px 50px rgba(0, 243, 255, 0.15);
+}
+
+.card-image {
+    position: relative;
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+}
+
+.card-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.product-card:hover .card-image img {
+    transform: scale(1.1);
+    filter: brightness(0.7);
+}
+
+/* Botón Añadir al Carrito (Hover Overlay) */
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+.product-card:hover .overlay {
+    opacity: 1;
+}
+
+.add-cart-btn {
+    background: var(--accent-primary);
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-family: var(--font-code);
+    font-weight: 800;
+    text-transform: uppercase;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transform: translateY(30px);
+    transition: 0.3s;
+    letter-spacing: 1px;
+}
+
+.product-card:hover .add-cart-btn {
+    transform: translateY(0);
+}
+
+.add-cart-btn:hover {
+    background: white;
+    box-shadow: 0 0 20px var(--accent-primary);
+}
+
+/* Detalles del Producto */
+.card-info {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    flex-grow: 1;
+    background: linear-gradient(to bottom, #0a0a0c, #0f0f12);
+}
+
+.info-header {
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    color: white;
+    font-weight: 700;
+    margin: 0;
+}
+
+.rating {
+    font-family: var(--font-code);
+    color: #ffc107;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
+
+.card-desc {
+    color: #888;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    margin: 0;
+    font-weight: 400;
+    min-height: 40px;
+}
+
+.price {
     font-family: var(--font-code);
     color: var(--accent-primary);
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 1px solid var(--card-border);
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-top: auto;
+    padding-top: 15px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    display: block;
 }
 
-.lang-list li {
+/* ==========================================================================
+   8. PREGUNTAS FRECUENTES (FAQ)
+   ========================================================================== */
+.faq-section {
+    padding: 80px 10%;
+    position: relative;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.faq-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.faq-card {
+    background: rgba(20, 20, 22, 0.6);
+    border: 1px solid #2D2D2D;
+    padding: 40px 30px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
     display: flex;
-    align-items: center;
-    gap: 15px;
-    padding: 15px;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: 0.2s;
-    font-family: var(--font-code);
-    color: var(--text-muted);
+    flex-direction: column;
+    justify-content: center;
 }
 
-.lang-list li:hover {
-    background: var(--card-bg);
+.faq-bg-icon {
+    position: absolute;
+    bottom: -20px;
+    right: -20px;
+    font-size: 8rem;
+    color: rgba(255, 255, 255, 0.03);
+    transform: rotate(-20deg);
+    transition: 0.4s;
+    pointer-events: none;
+}
+
+.faq-card:hover .faq-bg-icon {
+    color: rgba(0, 243, 255, 0.1);
+    transform: rotate(0deg) scale(1.1);
+}
+
+.faq-card:hover {
+    border-color: var(--accent-primary);
+    background: rgba(20, 20, 22, 0.9);
+    transform: translateY(-5px);
+}
+
+.faq-card h3 {
+    font-family: var(--font-main);
     color: white;
-    padding-left: 20px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    line-height: 1.3;
+    z-index: 2;
 }
 
-/* =========================================
-   5. LOGIN MODAL & AUTH STATES
-   ========================================= */
+.faq-card p {
+    color: #aaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    z-index: 2;
+}
 
-/* Fondo oscuro borroso detrás del modal */
+/* ==========================================================================
+   9. LOGIN MODAL Y PERFIL DE USUARIO
+   ========================================================================== */
 .modal-overlay {
     position: fixed;
     top: 0;
@@ -659,16 +1044,12 @@ ul {
     visibility: visible;
 }
 
-/* La caja del modal */
 .modal-content {
     background: #0a0a0c;
     border: 1px solid var(--card-border);
     width: 90%;
-    /* Ocupa más en móviles */
     max-width: 550px;
-    /* ANTES ERA 400px -> AHORA ES MÁS ANCHO */
     border-radius: 20px;
-    /* Bordes más redondeados */
     box-shadow: 0 0 50px rgba(0, 243, 255, 0.15);
     transform: scale(0.9);
     transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -682,7 +1063,6 @@ ul {
 .modal-header {
     background: rgba(255, 255, 255, 0.03);
     padding: 25px 30px;
-    /* Más espacio */
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -691,7 +1071,6 @@ ul {
 
 .modal-header h3 {
     font-size: 1.2rem;
-    /* Texto más grande */
 }
 
 .close-modal {
@@ -706,7 +1085,6 @@ ul {
 
 .modal-body {
     padding: 40px 50px;
-    /* Mucho más espacio interno */
     text-align: center;
 }
 
@@ -716,29 +1094,23 @@ ul {
     margin-bottom: 30px;
 }
 
-/* Botones de Login */
 .login-option {
     width: 100%;
     padding: 16px;
-    /* Botones más altos */
     margin-bottom: 20px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
     font-family: var(--font-main);
     font-size: 1.1rem;
-    /* Letra más grande */
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 15px;
     transition: 0.3s;
     font-weight: 600;
-    position: relative;
-    overflow: hidden;
 }
 
-/* Estilo FiveM (Naranja oficial cfx.re) */
 .login-option.fivem {
     background: linear-gradient(135deg, rgb(113, 34, 10) 0%, rgb(133, 47, 25) 100%);
     color: white;
@@ -755,7 +1127,6 @@ ul {
     height: auto;
 }
 
-/* Estilo Discord */
 .login-option.discord {
     background: linear-gradient(135deg, #5865F2 0%, #4752c4 100%);
     color: white;
@@ -783,7 +1154,7 @@ ul {
     font-size: 0.7rem;
 }
 
-/* --- ESTADO LOGUEADO (USER PROFILE) --- */
+/* Perfil de Usuario Logueado (Navbar) */
 .user-profile-nav {
     display: flex;
     align-items: center;
@@ -815,81 +1186,62 @@ ul {
     font-family: var(--font-code);
 }
 
-/* =========================================
-   6. AJUSTES ESPECÍFICOS
-   ========================================= */
-
-/* --- AJUSTES WIDGET PAGOS --- */
-.payments-list-container {
-    max-height: 400px;
-    /* Altura máxima antes de scroll */
-    overflow: hidden;
-    /* Oculto por defecto */
-    transition: max-height 0.3s ease;
-}
-
-.payments-list-container.scrollable {
-    overflow-y: auto;
-    /* Scroll si se expande */
-    padding-right: 5px;
-    /* Espacio para la barra */
-}
-
-/* Scrollbar fina para el widget */
-.payments-list-container::-webkit-scrollbar {
-    width: 4px;
-}
-
-.payments-list-container::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-.payments-list-container::-webkit-scrollbar-thumb {
-    background: var(--accent-secondary);
-    border-radius: 2px;
-}
-
-/* Botón Ver Todos */
-.widget-footer {
-    border-top: 1px solid var(--card-border);
-    padding-top: 10px;
-    margin-top: 10px;
-    text-align: center;
-}
-
-.view-all-btn {
-    background: transparent;
-    border: none;
-    color: var(--accent-primary);
-    font-family: var(--font-code);
+/* ==========================================================================
+   10. FOOTER (PIE DE PÁGINA)
+   ========================================================================== */
+.legal-footer {
+    padding: 0 10% 40px;
+    font-family: var(--font-main);
     font-size: 0.8rem;
-    cursor: pointer;
+    color: #666;
+}
+
+.footer-divider {
+    width: 100%;
+    height: 1px;
+    background: rgba(255, 255, 255, 0.1);
+    margin-bottom: 25px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.footer-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: #888;
     transition: 0.3s;
 }
 
-.view-all-btn:hover {
-    color: white;
-    text-shadow: 0 0 5px var(--accent-glow);
+.footer-links a:hover {
+    color: var(--accent-primary);
+    text-decoration: underline;
 }
 
-/* --- FIX WIDGET DESTACADO (Bug Image) --- */
-.featured-img-wrapper {
-    width: 20%;
-    height: 20px;
-    position: relative;
-    background-color: #000;
-    /* Fondo negro por si falla la imagen */
-    overflow: hidden;
-    border-radius: 8px;
+.separator {
+    color: #333;
 }
 
-/* Animación de entrada suave para la lista */
-.fade-in {
-    animation: fadeInList 0.5s ease forwards;
+.footer-copyright {
+    text-align: right;
+    color: #555;
 }
 
+/* ==========================================================================
+   11. ANIMACIONES Y RESPONSIVE (MÓVIL/TABLET)
+   ========================================================================== */
 
-
+/* Animación de entrada para listas */
 @keyframes fadeInList {
     from {
         opacity: 0;
@@ -899,5 +1251,60 @@ ul {
     to {
         opacity: 1;
         transform: translateY(0);
+    }
+}
+
+/* Animación de scroll del texto Marquee */
+@keyframes scrollText {
+    0% {
+        transform: translateX(0);
+    }
+
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* Tablets y Portátiles pequeños */
+@media (max-width: 1024px) {
+
+    .products-grid,
+    .faq-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* Móviles y Tablets verticales */
+@media (max-width: 900px) {
+    .navbar {
+        grid-template-columns: 1fr 1fr;
+        /* 2 Columnas */
+    }
+
+    .nav-center {
+        display: none;
+    }
+
+    /* Ocultar menú enlaces */
+    .nav-right {
+        justify-self: end;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 768px) {
+
+    .products-grid,
+    .faq-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-copyright {
+        text-align: center;
     }
 }
